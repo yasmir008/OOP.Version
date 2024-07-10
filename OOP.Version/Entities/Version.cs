@@ -4,17 +4,17 @@ namespace OOP.Version.Entities;
 
 public class Version
 {
-    public Version(string versionString)
+    public Version(string version)
     {
-        if (string.IsNullOrWhiteSpace(versionString))
+        if (string.IsNullOrWhiteSpace(version))
         {
-            InitialDefaultValues();
+            InitializeDefaultValues();
         }
         else
         {
-            _major = VersionStringParser.GetMajor(versionString);
-            _minor = VersionStringParser.GetMinor(versionString);
-            _patch = VersionStringParser.GetPatch(versionString);
+            _major = VersionStringParser.GetMajor(version);
+            _minor = VersionStringParser.GetMinor(version);
+            _patch = VersionStringParser.GetPatch(version);
         }
 
         _mementos = new List<VersionMemento>();
@@ -69,7 +69,7 @@ public class Version
     public string Release() => $"{_major}.{_minor}.{_patch}";
     public override string ToString() => Release();
 
-    private void InitialDefaultValues()
+    private void InitializeDefaultValues()
     {
         _major = 0;
         _minor = 0;
